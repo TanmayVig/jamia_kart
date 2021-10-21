@@ -1,17 +1,30 @@
-import React from "react";
-import axios from "axios";
-import HomePage from "./Components/HomePage"
-import LoginForm from './Components/LoginForm';
-import RegisterForm from './Components/RegisterForm';
+import React, { useEffect } from "react";
+import AOS from "aos";
+// import { Provider } from 'react-redux';
 
+import Routes from "./Routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  axios.get('https://fakestoreapi.com/products/1').then(res => console.log(res));
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
-      {/* <RegisterForm /><LoginForm /> */}
-      <HomePage />
-      </>
+      <Routes />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 };
 
